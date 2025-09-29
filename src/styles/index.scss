@@ -74,6 +74,36 @@ body {
   }
 }
 
+// ------------- Banner -------------
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 223px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: $black;
+    opacity: 0.4;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  h1 {
+    color: $white;
+    font-size: 3rem;
+    font-weight: 700;
+    z-index: 2;
+  }
+}
+
 // ------------- Home -------------
 
 .home {
@@ -87,39 +117,14 @@ body {
   padding: 45px 0;
   gap: 50px;
 
-  .banner {
-    position: relative;
-    width: 100%;
-    height: 223px;
+  .banner-home {
     background: url("../assets/img/sea-banner.png") center/cover no-repeat;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: $black;
-      opacity: 0.4;
-      border-radius: inherit;
-      z-index: 1;
-    }
-
-    h1 {
-      color: $white;
-      font-size: 3rem;
-      font-weight: 700;
-      z-index: 2;
-    }
   }
 
   .cards-wrapper {
     width: 100%;
     background: $grayLight;
-    padding: 56px 40px;
+    padding: 56px 40px 40px 56px;
     border-radius: 25px;
     height: 829px;
     overflow: hidden;
@@ -197,6 +202,96 @@ body {
     font-weight: 700;
     line-height: 1.5rem;
     z-index: 2;
+  }
+}
+
+// ------------- A Propos -------------
+
+.about {
+  max-width: 1240px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 45px 0;
+  gap: 40px;
+
+  .banner-about {
+    background: url("../assets/img/mountain-banner.png") center/cover no-repeat;
+  }
+
+  .valeurs-container {
+    width: 100%;
+    max-width: 1023px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+// ------------- Collapse -------------
+
+.collapse {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+
+  &__header {
+    padding: 10px 20px 10px 15px;
+    width: 100%;
+    height: 52px;
+    background: $mainColor;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .collapse__toggle {
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .collapse__icon {
+      font-size: 1.5rem;
+      width: 24px;
+      height: 24px;
+      transition: transform 0.3s ease;
+
+      &.rotated {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    background: $grayLight;
+    transition: max-height 0.4s ease;
+
+    &.open {
+      max-height: 500px;
+    }
+  }
+
+  &__inner {
+    transform: translateY(-50px);
+    padding: 0 18px;
+    font-size: 1.125rem;
+    line-height: 1.6rem;
+    transition: transform 0.4s, padding 0.4s;
+
+    .collapse__content.open & {
+      transform: translateY(0);
+      padding: 18px;
+    }
   }
 }
 

@@ -1,11 +1,10 @@
+import Banner from "../components/Banner";
 import CardContainer from "../components/CardContainer";
 
 const Home = () => {
   return (
     <div className="home">
-      <div className="banner">
-        <h1>Chez vous, partout et ailleurs</h1>
-      </div>
+      <Banner title={"Chez vous, partout et ailleurs"} img={"banner-home"} />
       <div className="cards-wrapper">
         <CardContainer />
       </div>
