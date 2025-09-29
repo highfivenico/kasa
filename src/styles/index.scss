@@ -3,6 +3,7 @@
 $mainColor: #ff6060;
 $white: #ffffff;
 $black: #000000;
+$grayLight: #f6f6f6;
 
 $cardHeight: 340px;
 $cardWidth: 340px;
@@ -20,8 +21,13 @@ body {
   height: 100%;
 }
 
+#root {
+  height: 100%;
+}
+
 .app {
   width: 100%;
+  margin: 0 auto;
   max-width: 1440px;
   min-height: 100vh;
   display: flex;
@@ -32,16 +38,20 @@ body {
 .main {
   display: flex;
   flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 // ------------- Header -------------
 
 .header {
   max-width: 1240px;
-  padding: 0 50px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0 auto;
 
   &__nav {
     display: flex;
@@ -61,6 +71,132 @@ body {
     &:hover {
       cursor: pointer;
     }
+  }
+}
+
+// ------------- Home -------------
+
+.home {
+  max-width: 1240px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 45px 0;
+  gap: 50px;
+
+  .banner {
+    position: relative;
+    width: 100%;
+    height: 223px;
+    background: url("../assets/img/sea-banner.png") center/cover no-repeat;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: $black;
+      opacity: 0.4;
+      border-radius: inherit;
+      z-index: 1;
+    }
+
+    h1 {
+      color: $white;
+      font-size: 3rem;
+      font-weight: 700;
+      z-index: 2;
+    }
+  }
+
+  .cards-wrapper {
+    width: 100%;
+    background: $grayLight;
+    padding: 56px 40px;
+    border-radius: 25px;
+    height: 829px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cards-container {
+    overflow-y: auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 340px);
+    justify-content: space-around;
+    gap: 50px;
+    padding: 0 10px;
+  }
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid $mainColor;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+}
+
+// ------------- Card -------------
+
+.card {
+  position: relative;
+  width: $cardWidth;
+  height: $cardHeight;
+  border-radius: $cardBorderRadius;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(10, 10, 10, 0) 42%,
+      rgba(4, 4, 4, 0.205) 99.99%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h2 {
+    position: absolute;
+    bottom: 20px;
+    margin: 0 20px;
+    color: $white;
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    z-index: 2;
   }
 }
 
@@ -86,15 +222,13 @@ body {
 // ------------- Page NotFound -------------
 
 .notfound {
-  text-align: center;
   color: $mainColor;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   flex: 1;
-  margin-top: 100px;
-  margin-bottom: 150px;
+  padding: 100px 0 150px;
 
   &__code {
     font-size: 18rem;
