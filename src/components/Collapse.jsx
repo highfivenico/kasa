@@ -1,4 +1,5 @@
 import { useState } from "react";
+import arrow from "../assets/img/arrow-up.png";
 
 const Collapse = ({ title, children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,11 +13,10 @@ const Collapse = ({ title, children }) => {
       <div className="collapse__header">
         <h2>{title}</h2>
         <div className="collapse__toggle" onClick={toggleCollapse}>
-          <i
-            className={`collapse__icon fa-solid fa-angle-up ${
-              isOpen ? "rotated" : ""
-            }`}
-          ></i>
+          <img
+            src={arrow}
+            className={`collapse__arrow ${isOpen ? "rotated" : ""}`}
+          ></img>
         </div>
       </div>
       <div className={`collapse__content ${isOpen ? "open" : ""}`}>

@@ -9,6 +9,9 @@ $cardHeight: 340px;
 $cardWidth: 340px;
 $cardBorderRadius: 10px;
 
+// Nombre maximum de photos dans la galerie des logements
+$max-slides: 20;
+
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +22,10 @@ $cardBorderRadius: 10px;
 body {
   font-family: "Montserrat", sans-serif;
   height: 100%;
+}
+
+li {
+  list-style: none;
 }
 
 #root {
@@ -39,8 +46,9 @@ body {
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin: 0 45px;
 }
 
 // ------------- Header -------------
@@ -104,7 +112,7 @@ body {
   }
 }
 
-// ------------- Home -------------
+// ------------- Page Home -------------
 
 .home {
   max-width: 1240px;
@@ -161,6 +169,105 @@ body {
   }
 }
 
+// ------------- Page House -------------
+
+.house {
+  max-width: 1240px;
+  width: 100%;
+  padding: 45px 0;
+
+  &__infos {
+    min-height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .title__container {
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .house__title {
+      h1 {
+        color: $mainColor;
+        font-size: 2.25rem;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      .house__location {
+        font-size: 1.125rem;
+        color: $black;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+    }
+  }
+
+  .tag__container {
+    display: flex;
+    justify-content: start;
+    gap: 10px;
+  }
+
+  &__host {
+    min-height: 130px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__host-profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  &__host-picture {
+    border-radius: 50%;
+    height: 64px;
+    width: 64px;
+  }
+
+  &__host-name {
+    color: $mainColor;
+    font-size: 1.125rem;
+    font-weight: 500;
+    max-width: 80px;
+    text-align: right;
+  }
+
+  &__specs {
+    display: flex;
+    gap: 76px;
+    margin-top: 10px;
+  }
+}
+
+// ------------- Tag -------------
+
+.house__tag {
+  min-width: 115px;
+  height: 25px;
+  border-radius: 10px;
+  background: $mainColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tag {
+  margin: 0 5px;
+  color: $white;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
 // ------------- Card -------------
 
 .card {
@@ -205,7 +312,96 @@ body {
   }
 }
 
-// ------------- A Propos -------------
+// ------------- Gallery -------------
+
+.gallery {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  height: 415px;
+  border-radius: 25px;
+  overflow: hidden;
+
+  &__slider {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+
+    @for $i from 0 through $max-slides {
+      &[data-index="#{$i}"] {
+        transform: translateX(calc(-#{$i} * 100%));
+      }
+    }
+  }
+
+  &__image {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__arrow {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &--left {
+      left: 25px;
+    }
+
+    &--right {
+      right: 25px;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 15px;
+    right: 50%;
+    transform: translateX(50%);
+    color: $white;
+    font-size: 1.125rem;
+    font-weight: 500;
+  }
+}
+
+// ------------- Star Rating -------------
+
+.star-rating {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 20px 0;
+
+  .star {
+    mask: var(--svg) no-repeat center;
+    mask-size: contain;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor;
+  }
+
+  .filled {
+    --svg: url("../assets/img/star.svg");
+    background-color: $mainColor;
+  }
+
+  .empty {
+    --svg: url("../assets/img/star.svg");
+    background-color: #e3e3e3;
+  }
+}
+
+// ------------- Page A Propos -------------
 
 .about {
   max-width: 1240px;
@@ -236,8 +432,9 @@ body {
 
 .collapse {
   width: 100%;
-  border-radius: 5px;
   overflow: hidden;
+  border-radius: 10px;
+  background-color: blue;
 
   &__header {
     padding: 10px 20px 10px 15px;
@@ -258,10 +455,9 @@ body {
       cursor: pointer;
     }
 
-    .collapse__icon {
-      font-size: 1.5rem;
+    .collapse__arrow {
       width: 24px;
-      height: 24px;
+      height: 13px;
       transition: transform 0.3s ease;
 
       &.rotated {
@@ -278,20 +474,21 @@ body {
 
     &.open {
       max-height: 500px;
+
+      .collapse__inner {
+        transform: translateY(0);
+        padding: 18px;
+      }
     }
   }
 
   &__inner {
-    transform: translateY(-50px);
+    transform: translateY(-100px);
     padding: 0 18px;
     font-size: 1.125rem;
+    font-weight: 400;
     line-height: 1.6rem;
     transition: transform 0.4s, padding 0.4s;
-
-    .collapse__content.open & {
-      transform: translateY(0);
-      padding: 18px;
-    }
   }
 }
 
@@ -334,6 +531,7 @@ body {
   &__message {
     font-size: 2.25rem;
     color: $mainColor;
+    text-align: center;
   }
 
   &__link {

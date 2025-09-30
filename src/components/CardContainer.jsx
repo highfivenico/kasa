@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import logements from "../data/logements.json";
+import { fetchLogements } from "../services/logementsData.js";
 import Card from "./Card";
 
 const CardContainer = () => {
-  const [logementsData, setLogements] = useState([]);
+  const [logementsData, setLogementsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   // Simulation du fetching data depuis le fichier JSON pour l'utilisation ultérieure de la bas de de données
@@ -11,7 +11,8 @@ const CardContainer = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        setLogements(logements);
+        const data = await fetchLogements();
+        setLogementsData(data);
       } catch (error) {
         console.error("Erreur lors du chargement des données :", error);
       } finally {
