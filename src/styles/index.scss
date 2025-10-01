@@ -9,8 +9,16 @@ $cardHeight: 340px;
 $cardWidth: 340px;
 $cardBorderRadius: 10px;
 
+$font-size-sm: 0.875rem; // 14px
+$font-size-md: 1.125rem; // 18px
+$font-size-lg: 1.5rem; // 24px
+$font-size-xl: 2.25rem; // 36px
+$font-size-xxl: 3rem; // 48px
+
 // Nombre maximum de photos dans la galerie des logements
 $max-slides: 20;
+
+// ------------- Settings -------------
 
 * {
   margin: 0;
@@ -51,66 +59,9 @@ li {
   margin: 0 45px;
 }
 
-// ------------- Header -------------
-
-.header {
-  max-width: 1240px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-
-  &__nav {
-    display: flex;
-    gap: 57px;
-  }
-
-  .nav-link {
-    text-decoration: none;
-    color: $black;
-    font-weight: 500;
-    font-size: 1.5rem;
-
-    &.active {
-      border-bottom: 1px solid $black;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-}
-
-// ------------- Banner -------------
-
-.banner {
-  position: relative;
-  width: 100%;
-  height: 223px;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: $black;
-    opacity: 0.4;
-    border-radius: inherit;
-    z-index: 1;
-  }
-
-  h1 {
-    color: $white;
-    font-size: 3rem;
-    font-weight: 700;
-    z-index: 2;
-  }
-}
+// ---------------------------------
+// ------------- Pages -------------
+// ---------------------------------
 
 // ------------- Page Home -------------
 
@@ -194,13 +145,13 @@ li {
     .house__title {
       h1 {
         color: $mainColor;
-        font-size: 2.25rem;
+        font-size: $font-size-xl;
         font-weight: 500;
         margin-bottom: 8px;
       }
 
       .house__location {
-        font-size: 1.125rem;
+        font-size: $font-size-md;
         color: $black;
         font-weight: 500;
         margin-bottom: 8px;
@@ -236,7 +187,7 @@ li {
 
   &__host-name {
     color: $mainColor;
-    font-size: 1.125rem;
+    font-size: $font-size-md;
     font-weight: 500;
     max-width: 80px;
     text-align: right;
@@ -246,6 +197,128 @@ li {
     display: flex;
     gap: 76px;
     margin-top: 10px;
+  }
+}
+
+// ------------- Page A Propos -------------
+
+.about {
+  max-width: 1240px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 45px 0;
+  gap: 40px;
+
+  .banner-about {
+    background: url("../assets/img/mountain-banner.png") center/cover no-repeat;
+  }
+
+  .valeurs-container {
+    width: 100%;
+    max-width: 1023px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+// ------------- Page NotFound -------------
+
+.notfound {
+  color: $mainColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding: 100px 0 150px;
+
+  &__code {
+    font-size: 18rem;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  &__message {
+    font-size: $font-size-xl;
+    color: $mainColor;
+    text-align: center;
+  }
+
+  &__link {
+    text-decoration: underline;
+    font-size: $font-size-md;
+    color: $black;
+  }
+}
+
+// --------------------------------------
+// ------------- Components -------------
+// --------------------------------------
+
+// ------------- Header -------------
+
+.header {
+  max-width: 1240px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+
+  &__nav {
+    display: flex;
+    gap: 57px;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: $black;
+    font-weight: 500;
+    font-size: $font-size-lg;
+
+    &.active {
+      border-bottom: 1px solid $black;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+// ------------- Banner -------------
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 223px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: $black;
+    opacity: 0.4;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  h1 {
+    color: $white;
+    font-size: $font-size-xxl;
+    font-weight: 700;
+    z-index: 2;
   }
 }
 
@@ -264,7 +337,7 @@ li {
 .tag {
   margin: 0 5px;
   color: $white;
-  font-size: 0.875rem;
+  font-size: $font-size-sm;
   font-weight: 700;
 }
 
@@ -305,7 +378,7 @@ li {
     bottom: 20px;
     margin: 0 20px;
     color: $white;
-    font-size: 1.125rem;
+    font-size: $font-size-md;
     font-weight: 700;
     line-height: 1.5rem;
     z-index: 2;
@@ -369,7 +442,7 @@ li {
     right: 50%;
     transform: translateX(50%);
     color: $white;
-    font-size: 1.125rem;
+    font-size: $font-size-md;
     font-weight: 500;
   }
 }
@@ -401,33 +474,6 @@ li {
   }
 }
 
-// ------------- Page A Propos -------------
-
-.about {
-  max-width: 1240px;
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-  padding: 45px 0;
-  gap: 40px;
-
-  .banner-about {
-    background: url("../assets/img/mountain-banner.png") center/cover no-repeat;
-  }
-
-  .valeurs-container {
-    width: 100%;
-    max-width: 1023px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-}
-
 // ------------- Collapse -------------
 
 .collapse {
@@ -453,7 +499,7 @@ li {
     background: $mainColor;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: $font-size-lg;
       font-weight: 700;
     }
 
@@ -488,7 +534,7 @@ li {
   }
 
   &__inner {
-    font-size: 1.125rem;
+    font-size: $font-size-md;
     font-weight: 400;
     line-height: 1.6rem;
   }
@@ -516,37 +562,7 @@ li {
   }
 
   &__text {
-    font-size: 1.5rem;
+    font-size: $font-size-lg;
     margin-bottom: 51px;
-  }
-}
-
-// ------------- Page NotFound -------------
-
-.notfound {
-  color: $mainColor;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  flex: 1;
-  padding: 100px 0 150px;
-
-  &__code {
-    font-size: 18rem;
-    margin: 0;
-    font-weight: 700;
-  }
-
-  &__message {
-    font-size: 2.25rem;
-    color: $mainColor;
-    text-align: center;
-  }
-
-  &__link {
-    text-decoration: underline;
-    font-size: 1.125rem;
-    color: $black;
   }
 }
