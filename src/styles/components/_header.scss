@@ -1,0 +1,43 @@
+.header {
+  max-width: 1240px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+
+  &__logo {
+    @media screen and (max-width: $small-device) {
+      width: 145px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: 57px;
+
+    @media screen and (max-width: $small-device) {
+      gap: 26px;
+    }
+  }
+
+  .nav-link {
+    text-decoration: none;
+    color: $black;
+    font-weight: 500;
+    font-size: $font-size-lg;
+
+    @media screen and (max-width: $small-device) {
+      font-size: $font-size-xs;
+      text-transform: uppercase;
+    }
+
+    &.active {
+      border-bottom: 1px solid $black;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

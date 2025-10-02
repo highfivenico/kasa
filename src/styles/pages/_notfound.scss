@@ -1,0 +1,40 @@
+.notfound {
+  color: $mainColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  padding: 100px 0 150px;
+
+  &__code {
+    font-size: 18rem;
+    margin: 0;
+    font-weight: 700;
+
+    @media screen and (max-width: $small-device) {
+      font-size: 6rem;
+    }
+  }
+
+  &__message {
+    font-size: $font-size-xl;
+    color: $mainColor;
+    text-align: center;
+
+    @media screen and (max-width: $small-device) {
+      width: 260px;
+      font-size: $font-size-md;
+    }
+  }
+
+  &__link {
+    text-decoration: underline;
+    font-size: $font-size-md;
+    color: $black;
+
+    @media screen and (max-width: $small-device) {
+      font-size: $font-size-sm;
+    }
+  }
+}

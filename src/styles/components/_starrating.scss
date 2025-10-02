@@ -1,0 +1,35 @@
+.star-rating {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 20px 0;
+
+  @media screen and (max-width: $small-device) {
+    justify-content: flex-start;
+    gap: 7px;
+    margin: 15px 0;
+  }
+
+  .star {
+    mask: var(--svg) no-repeat center;
+    mask-size: contain;
+    width: 24px;
+    height: 24px;
+    background-color: currentColor;
+
+    @media screen and (max-width: $small-device) {
+      width: 13px;
+      height: 13px;
+    }
+  }
+
+  .filled {
+    --svg: url("../../assets/img/star.svg");
+    background-color: $mainColor;
+  }
+
+  .empty {
+    --svg: url("../../assets/img/star.svg");
+    background-color: #e3e3e3;
+  }
+}

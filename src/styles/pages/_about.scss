@@ -1,0 +1,34 @@
+.about {
+  max-width: 1240px;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  padding: 45px 0;
+  gap: 40px;
+
+  @media screen and (max-width: $small-device) {
+    padding: 25px 0;
+    gap: 15px;
+  }
+
+  .banner-about {
+    background: url("../../assets/img/mountain-banner.png") center/cover
+      no-repeat;
+  }
+
+  .valeurs-container {
+    width: 100%;
+    max-width: 1023px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @media screen and (max-width: $small-device) {
+      gap: 20px;
+    }
+  }
+}

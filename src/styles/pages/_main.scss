@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 45px;
+
+  @media screen and (max-width: $small-device) {
+    margin: 0 20px;
+  }
+}

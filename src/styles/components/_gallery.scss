@@ -1,0 +1,86 @@
+.gallery {
+  position: relative;
+  width: 100%;
+  max-width: 1240px;
+  height: 415px;
+  border-radius: 25px;
+  overflow: hidden;
+
+  @media screen and (max-width: $small-device) {
+    height: 255px;
+    border-radius: 10px;
+  }
+
+  &__slider {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+
+    @for $i from 0 through $max-slides {
+      &[data-index="#{$i}"] {
+        transform: translateX(calc(-#{$i} * 100%));
+      }
+    }
+  }
+
+  &__image {
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__arrow {
+    border: none;
+    background: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 47px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @media screen and (max-width: $small-device) {
+      width: 12px;
+      height: 20px;
+    }
+
+    &--left {
+      left: 25px;
+
+      @media screen and (max-width: $small-device) {
+        left: 8px;
+      }
+    }
+
+    &--right {
+      right: 25px;
+
+      @media screen and (max-width: $small-device) {
+        right: 8px;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 15px;
+    right: 50%;
+    transform: translateX(50%);
+    color: $white;
+    font-size: $font-size-md;
+    font-weight: 500;
+
+    @media screen and (max-width: $small-device) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+.app {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1440px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 45px;
+
+  @media screen and (max-width: $small-device) {
+    padding-top: 16px;
+  }
+}

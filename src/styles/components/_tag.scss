@@ -1,0 +1,26 @@
+.house__tag {
+  min-width: 115px;
+  height: 25px;
+  border-radius: 10px;
+  background: $mainColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: $small-device) {
+    min-width: 84px;
+    height: 18px;
+    border-radius: 5px;
+  }
+}
+
+.tag {
+  margin: 0 5px;
+  color: $white;
+  font-size: $font-size-sm;
+  font-weight: 700;
+
+  @media screen and (max-width: $small-device) {
+    font-size: $font-size-xxs;
+  }
+}
