@@ -6,7 +6,7 @@ const CardContainer = () => {
   const [logementsData, setLogementsData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Simulation du fetching data depuis le fichier JSON pour l'utilisation ultérieure de la bas de de données
+  // Simulation du fetching data depuis le fichier JSON pour l'utilisation ultérieure de la base de données
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
